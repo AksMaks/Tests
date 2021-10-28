@@ -26,7 +26,11 @@
     }
   }
   function notifyMeTimeout() {
-    window.setTimeout(notifyMe(), 5000);
+    window.setTimeout(() => {
+      console.log("asd")
+      notifyMe()
+      console.log("asd")
+    }, 5000);
   }
   </script>
 </head>
