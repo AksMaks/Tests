@@ -25,9 +25,13 @@
       });
     }
   }
+  function notifyMeTimeout() {
+    window.notifyMe(slowAlert, 5000);
+  }
   </script>
 </head>
 <body>
   <button onclick="notifyMe()">Notify me!</button>
+  <button onclick="notifyMeTimeout()">notifyMeTimeout</button>
 </body>
 </html>
