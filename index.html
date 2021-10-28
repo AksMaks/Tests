@@ -25,17 +25,9 @@
       });
     }
   }
-  function notifyMeTimeout() {
-    window.setTimeout(() => {
-      console.log("asd")
-      notifyMe()
-      console.log("asd")
-    }, 5000);
-  }
   </script>
 </head>
 <body>
   <button onclick="notifyMe()">Notify me!</button>
-  <button onclick="notifyMeTimeout()">notifyMeTimeout</button>
 </body>
 </html>
