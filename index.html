@@ -50,7 +50,10 @@
       });
     }
   }
-  // Register a Service Worker.
+  const Keys = {
+    PublicKey: "BAGkHoOnWgpQJijptsk4sUzRGSuK245_4qDT1JgcGan2yOa1ub8D_SPOGar46Kn-kJoHUnnAVgMhJLrGmMaqmEE",
+    PrivateKey: "l9YIjHdFxtJYQtl4DEMFz3B4e8EsbcidivsGK-nC9QE"
+  }
   navigator.serviceWorker.register('service-worker.js');
 
   navigator.serviceWorker.ready.then(function(registration) {
@@ -58,9 +61,7 @@
       if (subscription) {
         return subscription;
       }
-      const response = await fetch('./vapidPublicKey');
-      const vapidPublicKey = await response.text();
-      const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
+      const convertedVapidKey = urlBase64ToUint8Array(Keys.PublicKey);
       return registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: convertedVapidKey
