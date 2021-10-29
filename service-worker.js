@@ -10,10 +10,10 @@ function getEndpoint() {
 }
 self.addEventListener('install', function(e) {
   e.waitUntil(
-    () => {
+    setTimeout(() => {
       console.log('SW: install');
       return true;
-    }
+    }, 5000)
   );
 });
 self.addEventListener('push', function(event) {
