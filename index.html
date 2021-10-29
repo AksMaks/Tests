@@ -1,33 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Firebase Cloud Messaging</title>
-  <script>
-  var options = {
-      body: "Test Notification (body)",
-      icon: "image.png"
-  };  
-  function notifyMe() {
-    if (!("Notification" in window)) {
-      alert("This browser does not support desktop notification");
-    }
-    else if (Notification.permission === "granted") {
-      // Если разрешено, то создаём уведомление
-      var notification = new Notification("Test Notification (title)", options);
-    }
-    else if (Notification.permission !== 'denied') {
-      Notification.requestPermission(function (permission) {
-        if (permission === "granted") {
-          var notification = new Notification("Test Notification (title)", options);
-        }
-      });
-    }
-  }
-  </script>
+  <title>Push Notification with payload retrieval - ServiceWorker Cookbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-  <button onclick="notifyMe()">Notify me!</button>
+  <body>
+  <form>
+    Notification payload: <input id='notification-payload' type='text' value='Insert here a payload'></input>
+    Notification delay: <input id='notification-delay' type='number' value='5'></input> seconds
+    Notification Time-To-Live: <input id='notification-ttl' type='number' value='0'></input> seconds
+  </form>
+
+  <button id="doIt">Request sending a notification!</button>
+
+  <script src="/tools.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>
