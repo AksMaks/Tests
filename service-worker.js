@@ -8,24 +8,24 @@ function getEndpoint() {
     throw new Error('User not subscribed');
   });
 }
-
-// Register event listener for the 'push' event.
+self.addEventListener('install', function(e) {
+  e.waitUntil(
+    () => {
+      console.log('SW: install');
+      return true;
+    }
+  );
+});
 self.addEventListener('push', function(event) {
-  // Keep the service worker alive until the notification is created.
   event.waitUntil(
     getEndpoint()
     .then(function(endpoint) {
-      // Retrieve the textual payload from the server using a GET request.
-      // We are using the endpoint as an unique ID of the user for simplicity.
-      return true //fetch('./getPayload?endpoint=' + endpoint);
+      return true
     })
     .then(function(response) {
-      return "asd"//response.text();
+      return "asd"
     })
     .then(function(payload) {
-      // Show a notification with title 'ServiceWorker Cookbook' and use the payload
-      // as the body.
-      
       self.registration.showNotification('ServiceWorker Cookbook', {
         body: payload,
       });
